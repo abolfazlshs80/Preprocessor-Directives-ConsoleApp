@@ -1,4 +1,6 @@
-﻿namespace Preprocessor_Directives_ConsoleApp
+﻿using System.Diagnostics;
+
+namespace Preprocessor_Directives_ConsoleApp
 {
     internal class Program
     {
@@ -19,6 +21,7 @@
             #endregion
 
             #region متدها
+            [Conditional("DEBUG")]
             void ShowInfo()
             {
                 Console.WriteLine($"Name: {name}, Number: {number}");
@@ -41,6 +44,16 @@
 #else
             Console.WriteLine("پلتفرم نامشخص");
 #endif
+        }
+    }
+
+    public class Person
+    {
+        public string Name { get; set; }
+        [Conditional("DEBUG"), Conditional("TEST")]
+        public void GetName()
+        {
+
         }
     }
 }
